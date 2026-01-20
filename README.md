@@ -17,6 +17,7 @@ public class ejercicio1 {
 }
 ```
 **Salida esperada (ejemplo)**
+---
 ![](img/Ejercicio1.png)
 ---
 ## Ejercicio 2: Suma de dos enteros
@@ -39,6 +40,7 @@ public class ejercicio2 {
 }
 ```
 **Salida esperada**
+---
 ![](img/Ejercicio2.png)
 ---
 ## Ejercicio 3: Conversión de double a int (casting)
@@ -59,6 +61,7 @@ public class ejercicio3 {
 }
 ```
 **Salida esperada**
+---
 ![](img/Ejercicio3.png)
 ---
 ## Ejercicio 4: Calculadora básica con operadores
@@ -89,6 +92,7 @@ public class ejercicio4 {
 }
 ```
 **Salida esperada**
+---
 ![](img/Ejercicio4.png)
 ---
 ## Ejercicio 5: Mayor de edad (if-else)
@@ -114,6 +118,7 @@ public class ejercicio5 {
 }
 ```
 **Salida esperada**
+---
 ![](img/Ejercicio5.png)
 ---
 ## Ejercicio 6: Clasificación por rango de edad (if-else if)
@@ -146,6 +151,7 @@ public class ejercicio6 {
 }
 ```
 **Salida esperada**
+---
 ![](img/Ejercicio6.png)
 ---
 ## Ejercicio 7: Día de la semana (switch)
@@ -198,6 +204,7 @@ public class ejercicio7 {
 }
 ```
 **Salida esperada**
+---
 ![](img/Ejercicio7.png)
 ---
 ## Ejercicio 8: Comparación de nombres con equalsIgnoreCase
@@ -228,6 +235,7 @@ public class ejercicio8 {
 }
 ```
 **Salida esperada**
+---
 ![](img/Ejercicio8.png)
 ---
 ## Ejercicio 9: Clasificación de calificación (if-else y operadores lógicos)
@@ -262,6 +270,7 @@ public class ejercicio9 {
 }
 ```
 **Salida esperada**
+---
 ![](img/Ejercicio9.png)
 ---
 ## Ejercicio 10: Números pares en un rango (for + arreglo pequeño)
@@ -295,4 +304,343 @@ public class ejercicio10 {
 }
 ```
 **Salida esperada**
+---
 ![](img/Ejercicio10.png)
+---
+# Ejercicios Java: comparación y operadores lógicos
+Todos los ejercicios deben resolverse usando **estructuras de selección** (`if`,
+`if-else`, `if-else if`, `switch`) y **operadores lógicos** (`&&`, `||`, `!`,
+relacionales). No uses estructuras repetitivas todavía.
+---
+## Ejercicio 11: Número positivo o negativo
+**Enunciado**
+Escribe un programa que pida un número entero y muestre si es positivo, negativo o
+cero usando `if-else if-else`.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio11 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Escriba un número: ");
+        int num = sc.nextInt();
+        if (num == 0) {
+            System.out.println("Su número es 0");
+        } else if (num > 0) {
+            System.out.println("Su número es positivo");
+        } else if (num < 0) {
+            System.out.println("Su número es negativo");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio11.png)
+---
+## Ejercicio 12: Par y dentro de rango
+**Enunciado**
+Escribe un programa que pida un número entero y verifique **dos condiciones**:
+- Que sea par.
+- Que esté entre 1 y 100 (inclusive).
+Si se cumplen ambas, muestra: `El número es par y está entre 1 y 100.`
+En otro caso, muestra: `El número NO cumple las condiciones.`
+Usa operadores lógicos (`&&`).
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio12 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Escriba un número: ");
+        int num = sc.nextInt();
+        if (num%2 == 0 && num>0 && num<=100){
+            System.err.println("El número es par y esta entre 1 y el 100");
+        } else {
+            System.out.println("El número NO cumple con las condiones");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio12.png)
+---
+## Ejercicio 13: Edad válida y mayor de edad
+**Enunciado**
+Escribe un programa que pida una edad entera y verifique:
+1. Que la edad esté en el rango 0 a 120.
+2. Que sea mayor o igual a 18.
+Si la edad es inválida (fuera de 0 a 120) muestra: `Edad inválida.`
+Si es válida y mayor o igual a 18, muestra: `Edad válida y eres mayor de edad.`
+Si es válida y menor a 18, muestra: `Edad válida y eres menor de edad.`
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio13 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.err.print("Inserta tu edad: ");
+        int edad = sc.nextInt();
+        if (edad > 0 && edad <120){
+            if (edad >= 18){
+                System.out.println("Tu edad es valida y eres mayor de edad");
+            } else if (edad < 18){
+                System.out.println("Tu edad es valida y eres menor de edad");
+            }
+        } else {
+            System.err.println("Edad invalida");
+        }
+    }
+}
+
+```
+**Salida esperada**
+---
+![](img/Ejercicio13.png)
+---
+## Ejercicio 14: Acceso a sala por edad y credencial
+**Enunciado**
+Una sala de cine solo permite acceso si:
+- La edad es mayor o igual a 15 **y**
+- La persona tiene credencial de estudiante (`true` / `false`).
+Pide la edad y luego pide si tiene credencial (puedes leer `"si"` o `"no"` y
+convertir a un `boolean`).
+Usa `&&` para decidir si puede pasar.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio14 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("ENTRADAS AL CINE");
+        System.out.println("----------------");
+        System.out.print("Ingresa tu edad: ");
+        int edad = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Tienes credencial (si/no): ");
+        String op = sc.nextLine();
+        if (op.equalsIgnoreCase("si") || op.equalsIgnoreCase("no")) {
+            if (edad >= 15 && op.equalsIgnoreCase("si")) {
+                System.out.println("Acceso permitido");
+            } else {
+                System.out.println("Acceso denegado");
+            }
+        } else {
+            System.out.println("Opción no válida");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio14.png)
+---
+## Ejercicio 15: Usuario y contraseña correctos
+**Enunciado**
+En el código define dos `String` con usuario y contraseña correctos, por ejemplo:
+- Usuario correcto: `"admin"`
+- Contraseña correcta: `"1234"`
+Pide al usuario que ingrese usuario y contraseña.
+Usa operadores lógicos y comparación de cadenas (`equals`) para mostrar:
+- `Acceso concedido.` si **ambos** coinciden.
+- `Acceso denegado.` en cualquier otro caso.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio15 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingresa tu usuario: ");
+        String user = sc.nextLine();
+        System.out.println("Ingresa la contraseña: ");
+        int conts = sc.nextInt();
+        String cUser = "admin";
+        int cConts = 1234;
+        if (user.equals(cUser) && conts == cConts){
+            System.out.println("Acceso concedido");
+        } else {
+            System.out.println("Acceso denegado");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio15.png)
+---
+## Ejercicio 16: Múltiplo de 3 o de 5
+**Enunciado**
+Escribe un programa que pida un número entero y determine:
+- Si es múltiplo de 3 **o** de 5.
+Si se cumple alguna de las dos condiciones, muestra: `Es múltiplo de 3 o de 5.`
+En caso contrario, muestra: `No es múltiplo de 3 ni de 5.`
+Usa el operador `||`.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio16 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingresa un número: ");
+        int num = sc.nextInt();
+        if (num%3 == 0 || num%5 == 0) {
+            System.out.println("Es multiplo de 3 o 5");
+        } else {
+            System.out.println("No es multiplo de 3 o 5");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio16.png)
+---
+## Ejercicio 17: Dentro de intervalo cerrado o abierto
+**Enunciado**
+Escribe un programa que pida un número decimal y determine si:
+- Está en el intervalo **cerrado** [10, 20] (incluye 10 y 20).
+- O está en el intervalo **abierto** (30, 40) (no incluye 30 ni 40).
+Si está en alguno de los dos intervalos, muestra:
+`El número está en uno de los intervalos válidos.`
+Si no, muestra:
+`El número está fuera de los intervalos.`
+Usa operadores relacionales y `||`.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio17 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Escribe un número: ");
+        double num = sc.nextDouble();
+        if (num >= 10.0 && num <= 20.0 || num > 30.0 && num < 40.0) {
+            System.out.println("El número está en uno de los intervalos válidos");
+        } else {
+            System.out.println("El número esta fuera de los intervalos");
+        }
+    }
+```
+**Salida esperada**
+---
+![](img/Ejercicio17.png)
+---
+## Ejercicio 18: Clasificación de carácter
+**Enunciado**
+Escribe un programa que pida un solo carácter (puedes leer un `String` y tomar
+`charAt(0)`) y determine si es:
+- Una letra mayúscula (`'A'` a `'Z'`)
+- Una letra minúscula (`'a'` a `'z'`)
+- Un dígito (`'0'` a `'9'`)
+- Otro símbolo cualquiera
+Usa comparaciones de rangos con operadores lógicos (`&&`, `||`) y muestra solo uno
+de los siguientes mensajes:
+- `Es una letra mayúscula.`
+- `Es una letra minúscula.`
+- `Es un dígito.`
+- `Es otro tipo de carácter.`
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio18 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingresa un solo caracter(letra/número): ");
+        String original = sc.nextLine();
+        char letra = original.charAt(0);
+        if (letra >= 'A' && letra <= 'Z') {
+            System.out.println("Es una letra mayúscula.");
+        } else if (letra >= 'a' && letra <= 'z') {
+            System.out.println("Es una letra minúscula.");
+        } else if (letra >= '0' && letra <= '9') {
+            System.out.println("Es un dígito.");
+        } else {
+            System.out.println("Es otro tipo de carácter.");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio18.png)
+---
+## Ejercicio 19: Aprobado, extraordinario o reprobado
+**Enunciado**
+Escribe un programa que pida una calificación entera de 0 a 100 y muestre:
+- Si es menor a 0 o mayor a 100: `Calificación inválida.`
+- Si está entre 70 y 100 (inclusive): `Aprobado.`
+- Si está entre 60 y 69 (inclusive): `Extraordinario.`
+- Si está entre 0 y 59 (inclusive): `Reprobado.`
+Usa `if`, `else if` y operadores lógicos para los rangos.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio19 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingresa tu calificación: ");
+        int calf = sc.nextInt();
+        if (calf == 0 || calf > 100) {
+            System.out.println("Calificación invalida");
+        } else if (calf >= 70 && calf <= 100) {
+            System.out.println("Aprobado");
+        } else if (calf >= 60 && calf <= 69) {
+            System.out.println("Extraordinario");
+        } else if (calf <= 59) {
+            System.out.println("Reprobado");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio19.png)
+---
+## Ejercicio 20: Elegible para beca
+**Enunciado**
+Una universidad otorga beca si se cumplen las siguientes condiciones:
+- Promedio mayor o igual a 85.
+- Ingreso familiar mensual menor a 20,000.
+- Y **no** tiene materias reprobadas (`true` / `false`).
+Escribe un programa que pida promedio (double), ingreso (double) y si tiene
+materias reprobadas (puedes leer `"si"`/`"no"` y convertirlo a `boolean`).
+Usa operadores lógicos `&&` y `!` para mostrar:
+- `Eres elegible para beca.` si se cumplen todas las condiciones.
+- `No eres elegible para beca.` en caso contrario.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio20 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("¿Cuál es su promedio?: ");
+        int calif = sc.nextInt();
+        System.out.print("¿Cuál es su ingreso familiar mensual?: ");
+        int inger = sc.nextInt();
+        sc.nextLine();
+        System.out.println("¿Tienes materias reprobadas?");
+        String op = sc.nextLine();
+        boolean opR = op.equalsIgnoreCase("si");
+
+        if (calif >= 85 && inger < 20000 && !opR) {
+            System.out.println("Eres elegible para beca.");
+        } else {
+            System.out.println("No eres elegible para beca.");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio20.png)
+
