@@ -1,3 +1,55 @@
+# Actividad 2
+**Enunciado**
+Asegúrate de contar con acceso a un entorno de desarrollo Java y, después, realiza lo siguiente:
+
+**Parte 1**. Strings y estructuras de selección
+
+Crea un programa Java que solicite al usuario ingresar su nombre.
+Utiliza estructuras de selección (if o switch) para verificar si el nombre ingresado coincide con uno específico que definas en tu programa; dependiendo de la coincidencia, muestra un mensaje personalizado.
+Aprovecha las operaciones de manejo de cadenas de texto para, así, realizar comparaciones con sensibilidad a mayúsculas o minúsculas y, de esta manera, proporcionar mensajes adecuados.
+
+**Parte 2**. Estructuras de repetición y arreglos
+
+Desarrolla un programa que genere una lista de números enteros pares desde dos hasta 100; para lograrlo, puedes utilizar una estructura de repetición (for o while).
+Almacena estos números en un arreglo.
+Luego, utiliza una estructura de repetición para recorrer el arreglo y mostrar en pantalla los números almacenados.
+---
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class Actividad2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese su nombre: ");
+        String nombre = sc.nextLine();
+        String nombre1 = "Erick";
+        String nombre2 = "Patricio";
+        String nombre3 = "Daisy";
+
+        if (nombre.equalsIgnoreCase(nombre1) || nombre.equalsIgnoreCase(nombre2) || nombre.equalsIgnoreCase(nombre3)){
+            System.out.println("Hola, " + nombre + " bienvenido de vuelta");
+        } else {
+            System.out.println("Hola, " + nombre + " no te reconozco");
+        }
+
+        int[] pares = new int[50];
+        int indice = 0;
+        for (int i = 2; i <= 100; i += 2) {
+            pares[indice] = i;
+            indice++;
+        }
+        System.out.println("Números pares del 2 al 100:");
+        for (int i = 0; i < pares.length; i++) {
+            System.out.println(pares[i]);
+        }
+    }
+}
+```
+**Salida esperada(ejemplo)**
+---
+
+---
 # Ejercicios básicos Java: tipos, Scanner, Strings y selección
 Cada ejercicio debe resolverse en un programa Java independiente (puedes usar un
 solo `main` y modificarlo entre ejercicios). Usa `Scanner` para las entradas por
@@ -7,6 +59,7 @@ teclado cuando aplique.
 **Enunciado**
 Escribe un programa que guarde tu nombre en una variable `String` y lo muestre en
 pantalla con el mensaje: `Hola, <nombre>`.
+---
 **Codigo**
 ```java
 public class ejercicio1 {
@@ -24,6 +77,7 @@ public class ejercicio1 {
 **Enunciado**
 Escribe un programa que pida por teclado dos números enteros y muestre la suma de
 ambos.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -47,6 +101,7 @@ public class ejercicio2 {
 **Enunciado**
 Escribe un programa que pida un número decimal (double), lo convierta a entero
 usando casting y muestre ambos valores.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -68,6 +123,7 @@ public class ejercicio3 {
 **Enunciado**
 Escribe un programa que pida dos enteros e imprima: suma, resta, multiplicación,
 división entera y el residuo (módulo) de la división.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -99,6 +155,7 @@ public class ejercicio4 {
 **Enunciado**
 Escribe un programa que pida la edad del usuario y muestre si es mayor o menor de
 edad usando `if-else`.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -128,6 +185,7 @@ Escribe un programa que pida la edad y muestre un mensaje según el rango:
 - De 13 a 17: “Eres un adolescente.”
 - De 18 a 64: “Eres un adulto.”
 - 65 o más: “Eres un adulto mayor.”
+---
 **Codigo**
 ```java 
 import java.util.Scanner;
@@ -165,6 +223,7 @@ correspondiente usando `switch`.
 - 5: Viernes
 - 6: Sábado
 - 7: Domingo
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -215,6 +274,7 @@ definido en el código (por ejemplo, `"Ricardo"`).
 bienvenido.`
 - Si no coincide, muestra: `Hola <nombre>, tu nombre no coincide.`
 Este ejercicio se parece a la **Parte 1 de la Actividad 2** de tu curso.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -246,6 +306,7 @@ Escribe un programa que pida una calificación entera de 0 a 100 y muestre:
 - 70 a 79: “Aprobado”
 - 0 a 69: “Reprobado”
 Si la calificación está fuera de ese rango, muestra: “Calificación inválida”.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -284,6 +345,7 @@ sencillo).
 espacio.
 Este ejercicio es una versión pequeña de la **Parte 2 de la Actividad 2** (pares y
 arreglos).
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -316,6 +378,7 @@ relacionales). No uses estructuras repetitivas todavía.
 **Enunciado**
 Escribe un programa que pida un número entero y muestre si es positivo, negativo o
 cero usando `if-else if-else`.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -347,6 +410,7 @@ Escribe un programa que pida un número entero y verifique **dos condiciones**:
 Si se cumplen ambas, muestra: `El número es par y está entre 1 y 100.`
 En otro caso, muestra: `El número NO cumple las condiciones.`
 Usa operadores lógicos (`&&`).
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -376,6 +440,7 @@ Escribe un programa que pida una edad entera y verifique:
 Si la edad es inválida (fuera de 0 a 120) muestra: `Edad inválida.`
 Si es válida y mayor o igual a 18, muestra: `Edad válida y eres mayor de edad.`
 Si es válida y menor a 18, muestra: `Edad válida y eres menor de edad.`
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -410,6 +475,7 @@ Una sala de cine solo permite acceso si:
 Pide la edad y luego pide si tiene credencial (puedes leer `"si"` o `"no"` y
 convertir a un `boolean`).
 Usa `&&` para decidir si puede pasar.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -449,6 +515,7 @@ Pide al usuario que ingrese usuario y contraseña.
 Usa operadores lógicos y comparación de cadenas (`equals`) para mostrar:
 - `Acceso concedido.` si **ambos** coinciden.
 - `Acceso denegado.` en cualquier otro caso.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -481,6 +548,7 @@ Escribe un programa que pida un número entero y determine:
 Si se cumple alguna de las dos condiciones, muestra: `Es múltiplo de 3 o de 5.`
 En caso contrario, muestra: `No es múltiplo de 3 ni de 5.`
 Usa el operador `||`.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -512,6 +580,7 @@ Si está en alguno de los dos intervalos, muestra:
 Si no, muestra:
 `El número está fuera de los intervalos.`
 Usa operadores relacionales y `||`.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -546,6 +615,7 @@ de los siguientes mensajes:
 - `Es una letra minúscula.`
 - `Es un dígito.`
 - `Es otro tipo de carácter.`
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -580,6 +650,7 @@ Escribe un programa que pida una calificación entera de 0 a 100 y muestre:
 - Si está entre 60 y 69 (inclusive): `Extraordinario.`
 - Si está entre 0 y 59 (inclusive): `Reprobado.`
 Usa `if`, `else if` y operadores lógicos para los rangos.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
@@ -616,6 +687,7 @@ materias reprobadas (puedes leer `"si"`/`"no"` y convertirlo a `boolean`).
 Usa operadores lógicos `&&` y `!` para mostrar:
 - `Eres elegible para beca.` si se cumplen todas las condiciones.
 - `No eres elegible para beca.` en caso contrario.
+---
 **Codigo**
 ```java
 import java.util.Scanner;
