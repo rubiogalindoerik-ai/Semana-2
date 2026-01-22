@@ -715,4 +715,464 @@ public class ejercicio20 {
 **Salida esperada**
 ---
 ![](img/Ejercicio20.png)
+---
+# Ejercicios Java difíciles: lógica sin ciclos
+Usa todo lo visto: tipos de datos, casting, operadores aritméticos, relacionales y
+lógicos, `String`, `if / if-else / if-else if` y `switch`. No uses estructuras
+repetitivas.[page:1]
+---
+## Ejercicio 21: Ordenar tres números (solo condiciones)
+**Enunciado**
+Escribe un programa que pida tres números enteros distintos y muestre el mayor, el
+del medio y el menor, usando solo `if-else if-else` y operadores lógicos. No puedes
+usar ciclos ni arreglos.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio21 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese el primer número: ");
+        int num = sc.nextInt();
+        System.out.print("Ingrese el segundo número: ");
+        int num2 = sc.nextInt();
+        System.out.print("Ingrese el tercero número: ");
+        int num3 = sc.nextInt();
+        if (num > num2 && num > num3){
+            System.out.println("El número mayor es: " + num);
+            if(num2 > num3) {
+                System.out.println("El número medio es: " + num2);
+                System.out.println("El número menor es: " + num3);
+            } else {
+                System.out.println("El número medio es: " + num3);
+                System.out.println("El número menor es: " + num2);
+            }
+        } else if (num2 > num && num2 > num3) {
+            System.out.println("El número mayor es: " + num2);
+            if(num > num3) {
+                System.out.println("El número medio es: " + num);
+                System.out.println("El número menor es: " + num3);
+            } else {
+                System.out.println("El número medio es: " + num3);
+                System.out.println("El número menor es: " + num);
+            }
+        } else if (num3 > num && num3 > num2) {
+            System.out.println("El número mayor es: " + num3);
+            if(num > num2) {
+                System.out.println("El número medio es: " + num);
+                System.out.println("El número menor es: " + num2);
+            } else {
+                System.out.println("El número medio es: " + num2);
+                System.out.println("El número menor es: " + num);
+            }
+        }
+```
+**Salida esperada**
+---
+![](img/Ejercicio21.png)
+---
+## Ejercicio 22: Tipo de triángulo
+**Enunciado**
+Escribe un programa que pida tres lados de un triángulo (double) y determine si:
+- Forman un triángulo válido (cada lado menor que la suma de los otros dos)
+- Y, si es válido, si es: equilátero, isósceles o escaleno.
+Usa combinaciones de `&&` y `||` para las comparaciones.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio22 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese la medida del lado 1 del triangulo: ");
+        double ld1 = sc.nextDouble();
+        System.out.print("Ingrese la medida del lado 2 del triangulo: ");
+        double ld2 = sc.nextDouble();
+        System.out.print("Ingrese la medida del lado 3 del triangulo: ");
+        double ld3 = sc.nextDouble();
+        if (ld1+ld2>ld3 && ld1+ld3>ld2 && ld2+ld3>ld1) {
+            if (ld1==ld2 && ld2==ld3) {
+                System.out.println("Triagulo válido: equilátero");
+            } else if (ld1==ld2 || ld1==ld3 || ld2==ld3) {
+                System.out.println("Triangulo válido: isósceles");
+            } else if (ld1!=ld2 && ld1!=ld3 && ld2!=ld3){
+                 System.out.println("Triangulo válido: escaleno");
+            }
+        } else {
+            System.out.println("Triangulo invalido");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio22.png)
+---
+## Ejercicio 23: Validador de fecha simple
+**Enunciado**
+Escribe un programa que pida día, mes y año (enteros) y determine si la fecha es
+válida considerando:
+- Mes entre 1 y 12.
+- Día entre 1 y 31.
+- Para meses 4, 6, 9 y 11 el día máximo es 30.
+- Para febrero (2) el día máximo es 28 (ignora años bisiestos para simplificar).
+Usa `if-else if` y operadores lógicos anidados.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio23 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese el día: ");
+        int dia = sc.nextInt();
+        System.out.print("Ingrese el mes: ");
+        int mes = sc.nextInt();
+        System.out.print("Ingrese el año: ");
+        int anio = sc.nextInt();
+        if (dia > 31 || mes > 12 || dia < 1 || mes < 1) {
+            System.out.println("Fecha invalida");
+        } else {
+            if (mes == 4 || mes == 6 || mes == 9 || mes == 11 && dia > 30) {
+                System.out.println("Fecha invalida");
+            } else if (mes == 2 && dia > 28) {
+                System.out.println("Fecha invalida");
+            } else {
+                System.out.println("Fecha valida");
+            }
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio23.png)
+---
+## Ejercicio 24: Calculadora de tarifa de luz
+**Enunciado**
+Una compañía de luz cobra según el consumo en kWh con las siguientes reglas:
+- Menos de 100 kWh: tarifa baja.
+- De 100 a 299 kWh: tarifa media.
+- De 300 a 499 kWh: tarifa alta.
+- 500 kWh o más: tarifa muy alta.
+Pide el consumo (entero) y muestra el tipo de tarifa. Luego, según la tarifa,
+calcula el monto aproximado usando estos costos:
+- Baja: 2.0 por kWh
+- Media: 2.5 por kWh
+- Alta: 3.0 por kWh
+- Muy alta: 3.5 por kWh
+Usa `if-else if` y operadores lógicos, más operadores aritméticos.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio24 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingresa tu consumo de kWh: ");
+        int kwh = sc.nextInt();
+        double kwhd = (double) kwh;
+        if (kwh < 100) {
+            double baja = kwhd * 2.0;
+            System.out.println("Tarifa baja aplicada, costo: "+ baja);
+        } else if (kwh>100 && kwh<300){
+            double media = kwhd * 2.5;
+            System.out.println("Tarifa media aplicada, costo: "+ media);
+        } else if (kwh>299 && kwh<500){
+            double alta = kwhd * 3.0;
+            System.out.println("Tarifa alta aplicada, costo: "+ alta);
+        } else if (kwh>500){
+            double muy_alta = kwhd * 3.5;
+            System.out.println("Tarifa muy alta aplicada, costo: "+ muy_alta);
+        }
+    }
+}
+```
+**Salida esperada (ejemplo)**
+---
+![](img/Ejercicio24.png)
+---
+## Ejercicio 25: Clasificación de punto en el plano
+**Enunciado**
+Escribe un programa que pida las coordenadas `x` y `y` (double) de un punto y
+determine:
+- Si está en el origen (0,0).
+- Si está sobre el eje X (y = 0, pero x != 0).
+- Si está sobre el eje Y (x = 0, pero y != 0).
+- Si está en el primer, segundo, tercer o cuarto cuadrante.
+Usa operadores relacionales y lógicos para todas las condiciones.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio25 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese la coordenada x: ");
+        double cordx = sc.nextDouble();
+        System.out.print("Ingrese la coordenada y: ");
+        double cordy = sc.nextDouble();
+        if (cordx == 0 && cordy == 0) {
+            System.out.println("El cordenadas estan en el origen");
+        } else if (cordy == 0 && cordx != 0) {
+            System.out.println("Las cordenadas estan sobre el eje de x");
+        } else if (cordx == 0 && cordy != 0) {
+            System.out.println("Las cordenadas estan sobre el eje de y");
+        } else if (cordx > 0 && cordy > 0) {
+            System.out.println("Las cordenadas estan en el primer cuadrante");
+        } else if (cordx < 0 && cordy > 0) {
+            System.out.println("Las cordenadas estan en el segundo cuadrante");
+        } else if (cordx < 0 && cordy < 0) {
+            System.out.println("Las cordenadas estan en el tercer cuadrante");
+        } else if (cordx > 0 && cordy < 0) {
+            System.out.println("Las cordenadas estan en el cuarto cuadrante");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio25.png)
+---
+## Ejercicio 26: Conversor de calificación numérica a letra con validación compleja
+**Enunciado**
+Convierte una calificación numérica (0 a 100) a calificación en letra con la
+siguiente tabla:
+- 90–100: A
+- 80–89: B
+- 70–79: C
+- 60–69: D
+- 0–59: F
+Además:
+- Si la calificación está fuera de 0 a 100, muestra: `Calificación inválida.`
+- Si es menor de 70 pero mayor o igual a 60, agrega un mensaje extra: `Tienes
+derecho a extraordinario.`
+Usa `if-else if`, operadores lógicos y concatenación de `String`.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio26 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingresa tu calificación de 0 a 100: ");
+        int calf = sc.nextInt();
+        if (calf > 100 || calf < 0) {
+            System.out.println("Calificación invalida");
+        } else if (calf >= 90 && calf <= 100) {
+            System.out.println("Calificación: A");
+        } else if (calf >= 80 && calf <= 89) {
+            System.out.println("Calificación: B");
+        } else if (calf >= 70 && calf <= 79) {
+            System.out.println("Calificación: C");
+        } else if (calf >= 60 && calf <= 69) {
+            System.out.println("Calificación: D. Tienes derecho a extraordinario");
+        } else if (calf >= 0 && calf <= 59) {
+            System.out.println("Calificación: F");
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio26.png)
+---
+## Ejercicio 27: Validador de contraseña fuerte
+**Enunciado**
+Pide una contraseña (`String`) y evalúa si es “fuerte” con reglas simplificadas:
+- Longitud mínima: 8 caracteres.
+- Debe contener al menos una letra mayúscula.
+- Debe contener al menos una letra minúscula.
+- Debe contener al menos un dígito.
+No puedes usar ciclos, así que asume que el usuario solo usará contraseñas de
+máximo 4 caracteres distintos repetidos varias veces y haz comprobaciones manuales
+sobre los primeros caracteres con `charAt` y operadores lógicos (la idea es
+forzarte a pensar la lógica sin for).
+Si cumple las reglas (según tu lógica limitada), muestra: `Contraseña fuerte (según
+las reglas simplificadas).`
+Si no, muestra: `Contraseña débil.`
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio27 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingresa una contraseña fuerte de al menos 8 characteres");
+        String contr = sc.nextLine();
+        boolean tMayu = contr.chars()
+        .anyMatch(Character::isUpperCase);
+        boolean tMin = contr.chars()
+        .anyMatch(Character::isLowerCase);
+        boolean tNum = contr.chars()
+        .anyMatch(Character::isDigit);
+        if (contr.length() < 8) {
+            System.out.println("La contraseña debe tener al menos 8 characteres");
+        } else if (tMayu == true && tMin == true && tNum == true) {
+            System.out.println("Contraseña fuerte (según las reglas simplificadas).");
+        } else {
+            System.out.println("Contraseña debil");
+        }
+    }
+}
+```
+**Salida esperada (con tu lógica simplificada)**
+---
+![](img/Ejercicio27.png)
+---
+## Ejercicio 28: Simulador de atención médica
+**Enunciado**
+En una clínica se decide la prioridad de atención de un paciente según estos datos:
+- Edad (entero).
+- ¿Es emergencia? (`true` o `false`, puedes leer `"si"`/`"no"`).
+- ¿Tiene enfermedad crónica? (`true` o `false`).
+Reglas:
+- Si es emergencia, siempre es “Prioridad máxima”.
+- Si no es emergencia pero la edad es mayor o igual a 65 **o** tiene enfermedad
+crónica, es “Prioridad alta”.
+- En otro caso, “Prioridad normal”.
+Usa `if-else` y operadores lógicos `||` y `&&`.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio28 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingresa tu edad: ");
+        int edad = sc.nextInt();
+        sc.nextLine();
+        System.out.println("¿Es emergencia?(si/no): ");
+        String opEmer = sc.nextLine();
+        boolean emergencia = opEmer.equalsIgnoreCase("si");
+        System.out.println("¿Tiene una enfermedad cronica?(si/no): ");
+        String opCron = sc.nextLine();
+        boolean cronica = opCron.equalsIgnoreCase("no");
+        if (emergencia) {
+            System.out.println("Prioridad máxima");
+        } else if (edad >= 65 || cronica) {
+            System.out.println("Prioridad alta");
+        } else {
+            System.out.println("Prioridad normal");
+        }
+        
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio28.png)
+---
+## Ejercicio 29: Cálculo de pago con múltiples descuentos
+**Enunciado**
+Una tienda ofrece los siguientes descuentos en la compra de un producto:
+- Si el precio base es mayor o igual a 1000, aplica 10% de descuento.
+- Si el cliente tiene membresía (`true`/`false`), aplica 5% adicional.
+- Si es día especial (por ejemplo `"LUNES"` o `"VIERNES"`), aplica 3% adicional.
+Las condiciones se pueden combinar (el descuento total es la suma de los
+porcentajes).
+Pide: precio base (double), si tiene membresía (`"si"`/`"no"`), y el día de la
+semana (`String` en mayúsculas).
+Calcula y muestra el **porcentaje total de descuento** y el **precio final a
+pagar**.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio29 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingresa el precio base: ");
+        double precio = sc.nextDouble();
+        sc.nextLine();
+        System.out.println("¿Cuentas con membresia?(si/no): ");
+        String opMenb = sc.nextLine();
+        boolean membresia = opMenb.equalsIgnoreCase("si");
+        System.out.println("Ingrese el dia de la semana: ");
+        String dia = sc.nextLine();
+        boolean diaLu = dia.equalsIgnoreCase("LUNES");
+        boolean diaVi = dia.equalsIgnoreCase("VIERNES");
+        if (precio >= 1000 && membresia && diaLu || diaVi) {
+            double descuento = 0.10 + 0.05 + 0.03;
+            double total = precio-(precio*descuento);
+            System.out.println("Descuento final: " + descuento);
+            System.out.println("Precio final: " + total);
+        } else if (precio >= 1000) {
+            double descuento = 10.0;
+            double total = precio-(precio*descuento);
+            System.out.println("Descuento final: " + descuento);
+            System.out.println("Precio final: " + total);
+        } else if (membresia) {
+            double descuento = 5.0;
+            double total = precio-(precio*descuento);
+            System.out.println("Descuento final: " + descuento);
+            System.out.println("Precio final: " + total);
+        } else if (diaLu || diaVi) {
+            double descuento = 3.0;
+            double total = precio-(precio*descuento);
+            System.out.println("Descuento final: " + descuento);
+            System.out.println("Precio final: " + total);
+        }
+    }
+}
+```
+**Salida esperada**
+---
+![](img/Ejercicio29.png)
+---
+## Ejercicio 30: Elegible para crédito bancario
+**Enunciado**
+Un banco decide si una persona es elegible para un crédito según estas reglas
+complejas:
+Pide:
+- Edad (entero)
+- Ingreso mensual (double)
+- Historial crediticio bueno (`true`/`false`)
+- ¿Tiene otras deudas grandes? (`true`/`false`)
+Es elegible si:
+1. La edad está entre 18 y 65 inclusive.
+2. El ingreso mensual es mayor o igual a 15,000.
+3. Tiene historial crediticio bueno.
+4. Y **no** tiene otras deudas grandes.
+Extra: si no cumple pero se queda **cerca** (por ejemplo ingreso entre 12,000 y
+14,999 y sin deudas grandes, con historial bueno y edad válida), muestra: `Puedes
+aplicar a revisión manual.`
+En cualquier otro caso, muestra: `Crédito rechazado.`
+Usa combinaciones de `&&`, `||` y `!` en una o varias estructuras `if-else`.
+**Codigo**
+```java
+import java.util.Scanner;
+
+public class ejercicio30 {
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       System.out.print("Ingresa tu edad: ");
+       int edad = sc.nextInt();
+       sc.nextLine();
+       System.out.print("¿Cuál es tu ingreso mensual?: ");
+       double ingr = sc.nextDouble();
+       sc.nextLine();
+       System.out.println("¿Tiene un historial crediticio bueno?: ");
+       String opHC = sc.nextLine();
+       boolean hcr = opHC.equalsIgnoreCase("si");
+       System.out.println("¿Tiene otras deudas grandes?: ");
+       String opDe = sc.nextLine();
+       boolean deu = opDe.equalsIgnoreCase("si");
+       if (edad >= 18 && edad <= 65 && ingr >= 15000 && hcr && deu == false) {
+            System.out.println("Aplicas para un credito");
+       } else if (ingr >= 12000 && ingr <= 14999) {
+            if (edad >= 18 && edad <= 65 && hcr && deu == false) {
+                System.out.println("Puedes aplicar a una revisión manual");
+            }
+       } else {
+        System.out.println("Credito rechazado");
+       }
+    }
+}
+
+```
+**Salida esperada**
+---
+![](img/Ejercicio30.png)
 
